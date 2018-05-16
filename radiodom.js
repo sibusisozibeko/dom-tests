@@ -18,22 +18,23 @@ var billItemTypeRadio = document.querySelector('.billItemTypeRadio')
 var totalCostTwo = 0;
 var handle1 = TextBill();
 function checkedRadio(){
-  var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
+var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
   if (checkedRadioBtn){
      var billItemType = checkedRadioBtn.value;
      handle1.text(billItemType);
      callTotalElemsTwo.innerHTML = handle1.col();
      smsTotalElemsTwo.innerHTML = handle1.mms();
      totalCostElemsTwo.innerHTML = handle1.bill();
-     totalCostsTwo = handle1.bill();
+     totalCostTwo = handle1.bill();
+
      if (totalCostTwo >= 50){
          // adding the danger class will make the text red
-         totalCostElem.classList.add("danger");
+         totalCostElemsTwo.classList.add("danger");
      }
      else if (totalCostTwo >= 30){
-         totalCostElem.classList.add("warning");
+      totalCostElemsTwo.classList.add("warning");
      }
 
-  }
+ }
 }
 radioBillAddBtn.addEventListener('click', checkedRadio);
