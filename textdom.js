@@ -1,3 +1,5 @@
+
+
 // get a reference to the textbox where the bill type is to be entered
 var callTotalElem = document.querySelector('.callTotalOne');
 var smsTotalElem = document.querySelector('.smsTotalOne');
@@ -8,31 +10,23 @@ var billTypeText = document.querySelector('.billTypeText');
 var addToBillBtn = document.querySelector('.addToBillBtn');
 
 //create a variable that will keep track of the total bill
-var callsTotal = 0;
-var smsTotal = 0;
 
-callTotalElem.innerHTML = "0.00";
-smsTotalElem.innerHTML = "0.00";
-totalCostElem.innerHTML = "0.00";
+// callTotalElem.innerHTML = "0.00";
+// smsTotalElem.innerHTML = "0.00";
+// totalCostElem.innerHTML = "0.00";
+var totalCost=0;
 
+var handle = TextBill();
 function textBillTotal(){
+
     // get the value entered in the billType textfield
     var billTypeEntered = billTypeText.value.trim();
-    // update the correct total
-    if (billTypeEntered === "call"){
-        callsTotal += 2.75
-    }
-    else if (billTypeEntered === "sms"){
-        smsTotal += 0.75;
-    }
-
-
+    handle.text(billTypeEntered);
     //update the totals that is displayed on the screen.
-    callTotalElem.innerHTML = callsTotal.toFixed(2);
-    smsTotalElem.innerHTML = smsTotal.toFixed(2);
-    var totalCost = callsTotal + smsTotal;
-    totalCostElem.innerHTML = totalCost.toFixed(2);
-
+    callTotalElem.innerHTML = handle.col();
+    smsTotalElem.innerHTML = handle.mms();
+    totalCostElem.innerHTML = handle.bill();
+    totalCost = handle.bill();
     if (totalCost >= 50){
         // adding the danger class will make the text red
         totalCostElem.classList.add("danger");
